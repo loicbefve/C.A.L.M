@@ -1,9 +1,15 @@
 ﻿
+<<<<<<< HEAD
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.A.L.M", "C.A.L.M.csproj", "{54E04F63-07F8-5E23-5385-00F790432AEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.A.L.M.Plugins", "C.A.L.M.Plugins.csproj", "{469DA776-0B9F-0956-8C2A-111A98EF6501}"
+=======
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.A.L.M", "Assembly-CSharp.csproj", "{75547E5E-EF06-2B65-BDB2-877BCEA36F66}"
+>>>>>>> fa298a65b83b14a71cc391aa03b920bf14aa13b7
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +17,7 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{54E04F63-07F8-5E23-5385-00F790432AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54E04F63-07F8-5E23-5385-00F790432AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E04F63-07F8-5E23-5385-00F790432AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -19,8 +26,20 @@ Global
 		{469DA776-0B9F-0956-8C2A-111A98EF6501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469DA776-0B9F-0956-8C2A-111A98EF6501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469DA776-0B9F-0956-8C2A-111A98EF6501}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{75547E5E-EF06-2B65-BDB2-877BCEA36F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75547E5E-EF06-2B65-BDB2-877BCEA36F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75547E5E-EF06-2B65-BDB2-877BCEA36F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75547E5E-EF06-2B65-BDB2-877BCEA36F66}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> fa298a65b83b14a71cc391aa03b920bf14aa13b7
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
+=======
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+>>>>>>> fa298a65b83b14a71cc391aa03b920bf14aa13b7
 EndGlobal
