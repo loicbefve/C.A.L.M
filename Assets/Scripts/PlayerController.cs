@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D m_RigidBody;
+	private Animator m_Animator;
 
     public float maxSpeed = 5.0f;
 
 	// Use this for initialization
 	void Start () {
         m_RigidBody = GetComponent<Rigidbody2D>();
+		m_Animator = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -22,12 +24,13 @@ public class PlayerController : MonoBehaviour {
     {
         //Valeur entre -1 et 1 selon intentsité de frappe sur l'axe horizontal
         float h = Input.GetAxis("Horizontal");
+		float v = Input.GetAxis ("Vertical");
         //Fonction responsable du mouvement
-        MovePlayer(h);
+        MovePlayer(h, v);
     }
 
-    void MovePlayer( float h )
+	void MovePlayer( float h, float v )
     {
-        m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, m_RigidBody.velocity.y + maxSpeed /1.5f);
+		m_RigidBody.velocity = new Vector2(h*maxSpeed,v*maxSpeed);
     }
 }
