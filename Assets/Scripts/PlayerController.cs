@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour {
         float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis ("Vertical");
         //Fonction responsable du mouvement
-        Debug.Log("facing Down :" + facingDown);
-        Debug.Log("facing Right :" + facingRight);
+        Debug.Log("facing Down :" + v);
+        Debug.Log("facing Right :" + h);
         MovePlayer(h, v);
     }
 
@@ -37,37 +37,53 @@ public class PlayerController : MonoBehaviour {
     {
         m_RigidBody.velocity = new Vector2(h * maxSpeed, v * maxSpeed);
 
-        if (h > 0)
+        SetBool_H_V(h, v);
+
+        if ((h > 0 && !facingRight) || (h < 0 && facingRight))
         {
-            m_Animator.SetBool("GoLeft", false);
-            m_Animator.SetBool("GoRight", true);
+            FlipH();
         }
-        else if (h < 0)
-        {
-            m_Animator.SetBool("GoLeft", true);
-            m_Animator.SetBool("GoRight", false);
-        }
-        else if(v > 0)
+    }
+
+    void SetBool_V(float v)
+    {
+        if (v > 0)
         {
             m_Animator.SetBool("GoUp", true);
             m_Animator.SetBool("GoDown", false);
         }
-        else if( v < 0)
+        else if (v < 0)
         {
             m_Animator.SetBool("GoUp", false);
             m_Animator.SetBool("GoDown", true);
         }
         else
         {
-            m_Animator.SetBool("GoLeft", false);
-            m_Animator.SetBool("GoRight", false);
             m_Animator.SetBool("GoUp", false);
             m_Animator.SetBool("GoDown", false);
         }
 
-        if ((h > 0 && !facingRight) || (h < 0 && facingRight))
+    }
+
+    void SetBool_H_V(float h, float v)
+    {
+        if (h > 0)
         {
-            FlipH();
+            m_Animator.SetBool("GoLeft", false);
+            m_Animator.SetBool("GoRight", true);
+            SetBool_V(v);
+        }
+        else if (h < 0)
+        {
+            m_Animator.SetBool("GoLeft", true);
+            m_Animator.SetBool("GoRight", false);
+            SetBool_V(v);
+        }
+        else
+        {
+            m_Animator.SetBool("GoLeft", false);
+            m_Animator.SetBool("GoRight", false);
+            SetBool_V(v);
         }
     }
 
