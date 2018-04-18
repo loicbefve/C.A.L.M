@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour {
 	private Animator m_Animator;
 
     public float maxSpeed = 5.0f;
+    private bool facingRight = false;
+    private bool facingDown = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         m_RigidBody = GetComponent<Rigidbody2D>();
 		m_Animator = GetComponent<Animator> ();
 	}
@@ -26,11 +28,64 @@ public class PlayerController : MonoBehaviour {
         float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis ("Vertical");
         //Fonction responsable du mouvement
+        Debug.Log("facing Down :" + facingDown);
+        Debug.Log("facing Right :" + facingRight);
         MovePlayer(h, v);
     }
 
 	void MovePlayer( float h, float v )
     {
-		m_RigidBody.velocity = new Vector2(h*maxSpeed,v*maxSpeed);
+        m_RigidBody.velocity = new Vector2(h * maxSpeed, v * maxSpeed);
+
+        if (h > 0)
+        {
+            m_Animator.SetBool("GoLeft", false);
+            m_Animator.SetBool("GoRight", true);
+        }
+        else if (h < 0)
+        {
+            m_Animator.SetBool("GoLeft", true);
+            m_Animator.SetBool("GoRight", false);
+        }
+        else if(v > 0)
+        {
+            m_Animator.SetBool("GoUp", true);
+            m_Animator.SetBool("GoDown", false);
+        }
+        else if( v < 0)
+        {
+            m_Animator.SetBool("GoUp", false);
+            m_Animator.SetBool("GoDown", true);
+        }
+        else
+        {
+            m_Animator.SetBool("GoLeft", false);
+            m_Animator.SetBool("GoRight", false);
+            m_Animator.SetBool("GoUp", false);
+            m_Animator.SetBool("GoDown", false);
+        }
+
+        if ((h > 0 && !facingRight) || (h < 0 && facingRight))
+        {
+            FlipH();
+        }
+    }
+
+    void FlipH()
+    {
+        facingRight = !facingRight;
+        
+        Vector3 s = transform.localScale;
+        s.x *= -1;
+        transform.localScale = s;
+    }
+
+    void FlipV()
+    {
+        facingDown = !facingDown;
+
+        Vector3 s = transform.localScale;
+        s.y *= -1;
+        transform.localScale = s;
     }
 }
