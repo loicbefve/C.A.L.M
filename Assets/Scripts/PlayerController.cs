@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour {
         float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis ("Vertical");
         //Fonction responsable du mouvement
-        Debug.Log("facing Down :" + v);
-        Debug.Log("facing Right :" + h);
+        //Debug.Log("facing Down :" + v);
+        //Debug.Log("facing Right :" + h);
         MovePlayer(h, v);
     }
 
@@ -38,6 +38,14 @@ public class PlayerController : MonoBehaviour {
         m_RigidBody.velocity = new Vector2(h * maxSpeed, v * maxSpeed);
 
         SetBool_H_V(h, v);
+
+
+        //Si on veut utiliser un miroir avec les sprites il faut ces lignes de code
+        if ((h > 0 && facingRight) || (h < 0 && !facingRight))
+        {
+            Flip();
+            Debug.Log("FLIP");
+        }
     }
 
     void SetBool_V(float v)
@@ -80,5 +88,14 @@ public class PlayerController : MonoBehaviour {
             m_Animator.SetBool("GoRight", false);
             SetBool_V(v);
         }
+    }
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector3 s = transform.localScale;
+        s.x *= -1;
+        transform.localScale = s;
     }
 }
