@@ -38,11 +38,6 @@ public class PlayerController : MonoBehaviour {
         m_RigidBody.velocity = new Vector2(h * maxSpeed, v * maxSpeed);
 
         SetBool_H_V(h, v);
-
-        if ((h > 0 && !facingRight) || (h < 0 && facingRight))
-        {
-            FlipH();
-        }
     }
 
     void SetBool_V(float v)
@@ -85,23 +80,5 @@ public class PlayerController : MonoBehaviour {
             m_Animator.SetBool("GoRight", false);
             SetBool_V(v);
         }
-    }
-
-    void FlipH()
-    {
-        facingRight = !facingRight;
-        
-        Vector3 s = transform.localScale;
-        s.x *= -1;
-        transform.localScale = s;
-    }
-
-    void FlipV()
-    {
-        facingDown = !facingDown;
-
-        Vector3 s = transform.localScale;
-        s.y *= -1;
-        transform.localScale = s;
     }
 }
