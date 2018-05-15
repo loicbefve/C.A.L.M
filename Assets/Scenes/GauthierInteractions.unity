@@ -252,11 +252,44 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1146581549434494, guid: 3fea8aa4013794a3cbc8c2054afc67a3, type: 2}
       propertyPath: m_TagString
-      value: Player1
+      value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 380968050}
+    - target: {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 789912493}
+    m_RemovedComponents:
+    - {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3fea8aa4013794a3cbc8c2054afc67a3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &380968050 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1146581549434494, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 267961164}
+--- !u!114 &380968053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380968050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd31026c6b94a4d5aa746f9feb7b39b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 2
+--- !u!1 &789912493 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1146581549434494, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1558941932}
 --- !u!1 &1153574426
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +415,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1146581549434494, guid: 3fea8aa4013794a3cbc8c2054afc67a3, type: 2}
       propertyPath: m_TagString
-      value: Player2
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 789912493}
+    - target: {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 380968050}
+    - target: {fileID: 114659563874812006, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50617313404320724, guid: 3fea8aa4013794a3cbc8c2054afc67a3,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3fea8aa4013794a3cbc8c2054afc67a3, type: 2}
