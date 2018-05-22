@@ -10,17 +10,19 @@ public class Player1Controller : MonoBehaviour {
 	public float maxSpeed = 5.0f;
 	private bool facingRight = false;
 
-
+	private GameObject target;
 
 	// Use this for initialization
 	void Start () {
+
 		rigidBody = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator> ();
+
+		target = GameObject.Find ("Player2");
 	}
 
 	// Update is called once per frame
 	void Update () {
-
 	}
 
 	private void FixedUpdate()
@@ -31,22 +33,28 @@ public class Player1Controller : MonoBehaviour {
 		//Fonction responsable du mouvement
 
 		MovePlayer (h, v);
-
+		float distance = Vector3.Distance (target.transform.position, transform.position);
+		float direction = Vector3.Dot ((target.transform.position - transform.position).normalized, new Vector3(h, v, 0).normalized);
+		if (Input.GetAxis ("Fire1_P1") > 0) {
+			Fire ();
+			if (distance < 1.0f && Mathf.Abs (direction) > 0.9f) {
+				Debug.Log ("Hit !");
+			}
+		}
 	}
 
-	void MovePlayer( float h, float v)
+	private void MovePlayer( float h, float v)
 	{
 		rigidBody.velocity = new Vector2 (h * maxSpeed, v * maxSpeed);
 		SetBool_H_V(h, v);
 		//Si on veut utiliser un miroir avec les sprites il faut ces lignes de code
 		if ((h > 0 && facingRight) || (h < 0 && !facingRight))
 		{
-			Debug.Log ("Flip");
 			Flip();
 		}
 	}
 
-	void SetBool_V(float v)
+	private void SetBool_V(float v)
 	{
 		if (v > 0) {
 			animator.SetBool ("GoUp", true);
@@ -60,7 +68,7 @@ public class Player1Controller : MonoBehaviour {
 		}
 	}
 
-	void SetBool_H_V(float h, float v)
+	private void SetBool_H_V(float h, float v)
 	{
 		if (h > 0) {
 			animator.SetBool ("GoLeft", false);
@@ -77,11 +85,16 @@ public class Player1Controller : MonoBehaviour {
 		}
 	}
 
-	void Flip()
+	private void Flip()
 	{
 		facingRight = !facingRight;
 		Vector3 s = transform.localScale;
 		s.x *= -1;
 		transform.localScale = s;
 	}
+
+	private void Fire(){
+	}
+
+
 }
